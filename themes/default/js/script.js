@@ -2,6 +2,7 @@ var price = [[]];
 var lastids = [];
 var turn = 1 ;
 bild_chess();
+media_screen();
 pointer(turn)
 setColor();
 add_price();
@@ -734,4 +735,24 @@ function pointer(turn) {
 
 	}
 	
+}
+function media_screen() {
+	let media_with = $(window).width();
+	let media_heigh = $(window).height();
+	if (media_with<=500) 
+	{
+		$("#page").css({
+			'height':media_with+'px',
+			'width':media_with+'px'
+		})
+	}
+	else
+	{
+		media_with-=100;
+		media_heigh-=100;
+		$("#page").css({
+			'height':media_heigh+'px',
+			'width':media_heigh+'px'
+		})
+	}
 }

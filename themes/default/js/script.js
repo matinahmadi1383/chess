@@ -2,6 +2,7 @@ var price = [[]];
 var lastids = [];
 var turn = 1 ;
 bild_chess();
+pointer(turn)
 setColor();
 add_price();
 $(".cell_chess").on('click',function () {
@@ -47,6 +48,7 @@ $(".cell_chess").on('click',function () {
 			}
 		}
 	}
+	pointer(turn)
 	lastids.push($(this).attr('data-id'));
 })
 function bild_chess() {
@@ -709,4 +711,27 @@ function test_attack(id,turn,price_attack_cell) {
 	if($(`.cell_chess[data-id=${id}] div`).attr('data-color')==color)
 		price_attack_cell.push(id);
 	return price_attack_cell;
+}
+function pointer(turn) {
+	for (var i = 1; i <= 64; i++) {
+		$(`.cell_chess[data-id=${i}] div`).css({
+			'cursor': 'auto'
+		})
+		if (turn%2==1)
+		{
+			if($(`.cell_chess[data-id=${i}] div`).attr('data-color')=="white")
+				$(`.cell_chess[data-id=${i}] div`).css({
+					'cursor': 'pointer'
+				})
+		}
+		else
+		{
+			if($(`.cell_chess[data-id=${i}] div`).attr('data-color')=="black")
+				$(`.cell_chess[data-id=${i}] div`).css({
+					'cursor': 'pointer'
+				})
+		}
+
+	}
+	
 }
